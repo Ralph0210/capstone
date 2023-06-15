@@ -18,7 +18,7 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
 
   return (
-    <nav>
+    <nav className='section__padding'>
       <div className='logo_container'>
       <Logo className='logo'/>
       </div>

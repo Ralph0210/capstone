@@ -1,0 +1,75 @@
+.hero_container {
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+  }
+
+.left_container {
+    flex: 1;
+    /* width: 29%; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    padding-bottom: 2rem;
+  }
+
+.left_container h2{
+    font-family: 'Roboto';
+    font-size: 5.6rem;
+  }
+
+.left_container h3 {
+    font-size: 3.2rem;
+    font-family: 'Markazi Text';
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+.left_container article {
+    font-size: 2rem;
+    margin-bottom: 7.2rem;
+    color: white;
+    font-family: var(--karla_regular);
+  }
+
+.left_container button {
+    font-family: var(--karla_regular);
+    font-size: 1.8rem;
+    padding: 5%;
+    border-radius: 0.5rem;
+    border: 0;
+    outline: 0;
+    background-color: var(--yellow);
+    max-width: 50%;
+  }
+
+.right_container {
+    flex: 1;
+    padding: 3rem 0;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.right_container img{
+    border-radius: 2rem;
+    width: 91%;
+    height: 91%;
+}
+
+@media screen and (max-width: 1050px) {
+    .hero_container {
+        flex-direction: column;
+        padding-top: 4rem;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .left_container button {
+        padding: 0.9rem 1.5rem;
+        max-width: 100%;
+    }
+}

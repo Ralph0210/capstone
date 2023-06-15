@@ -53,6 +53,7 @@ a {
 }
 
 .navbar_menu_nav_list {
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 2rem;
