@@ -27,6 +27,7 @@
     gap: 3.4rem;
     align-items: stretch;
     justify-content: stretch;
+    padding: 0 20% 2rem;
   }
 
   .card {
@@ -87,12 +88,36 @@
   font-size: 1.6rem;
   font-family: "Karla";
   font-weight: 700;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1050px) {
   .specials_cards {
-    flex-direction: column;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .specials_cards {
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
   }
+}
+
+@media screen and (max-width: 490px) {
+  .specials button {
+    font-size: 1.2rem;
+    padding: 1rem 0;
+    max-width: 10rem;
+  }
+
+  .specials h2 {
+    font-family: 'Karla';
+  font-size: 3.6rem;
+  flex:1;
+}
 }

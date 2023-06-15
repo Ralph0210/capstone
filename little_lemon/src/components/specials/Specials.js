@@ -57,7 +57,7 @@ const Specials = () => {
         <button className='online_menu'>Online Menu</button>
       </div>
 
-      <div className='specials_cards section__padding'>
+      <div className='specials_cards'>
         <Menu />
       </div>
 
