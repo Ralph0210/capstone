@@ -1,0 +1,6 @@
+export { default as Navbar } from './navbar/Navbar'
+export { default as CTA } from './cta/CTA'
+export { default as Homepage } from './homepage/Homepage'
+export { default as Specials } from './specials/Specials'
+export { default as Chicago } from './chicago/Chicago'
+export { default as Footer } from './footer/Footer'
