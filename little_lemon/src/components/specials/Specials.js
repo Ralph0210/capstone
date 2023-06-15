@@ -1,6 +1,6 @@
 import React from 'react'
 import './specials.css'
-import Greek_Salad from '../../assets/greek salad.jpg'
+import Greek_Salad from '../../assets/gsalad.jpg'
 import Bruchetta from "../../assets/bruschetta-2.jpg"
 import Lemon_Dessert from '../../assets/lemon dessert.jpg'
 
@@ -35,13 +35,15 @@ const Specials = () => {
               <img src={dish.picture} alt={dish.name} />
             </div>
             <div className='dish_content'>
+              <div className='dish_title'>
               <h2>{dish.name}</h2>
               <h3>{dish.price}</h3>
+              </div>
               <article>{dish.description}</article>
               <a href='#'>Order delivery</a>
             </div>
             </div>
-          </div>
+            </div>
       ))}
       </>
     )

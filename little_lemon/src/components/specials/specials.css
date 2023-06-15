@@ -21,15 +21,22 @@
   }
 
   .specials_cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    display: flex;
     gap: 3.4rem;
+    align-items: stretch;
+    justify-content: stretch;
   }
 
   .card {
-    border:2px solid var(--green);
+    flex: 1 0 1;
     border-radius: 2rem;
+    /* border: 2px solid var(--yellow); */
+    max-width: 26.5rem;
+    box-shadow: 0 2px 5px gray;
   }
+
 
   .menu_image_container{
     flex: 1;
@@ -38,6 +45,7 @@
 
 .menu_image_container img{
     max-height: 18.4rem;
+    max-width: 26.5rem;
     object-fit: cover;
     border-radius: 2rem 2rem 0 0;
     width: 100%;
@@ -45,4 +53,46 @@
 }
 
 .dish_content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+}
+
+.dish_title {
+    display: flex;
+    margin-bottom: 2.3rem;
+}
+
+.dish_title h2{
+    font-family: "Markazi Text";
+    font-size: 2.4rem;
+    flex: 1;
+  }
+
+  .dish_title h3{
+    align-items: flex-end;
+    font-size: 1.6rem;
+    font-family: "Karla";
+    font-weight: 700;
+  }
+
+.dish_content article {
+    font-family: "Karla";
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+}
+
+.dish_content a{
+    text-decoration: none;
+  font-size: 1.6rem;
+  font-family: "Karla";
+  font-weight: 700;
+}
+
+@media screen and (max-width: 1050px) {
+  .specials_cards {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
