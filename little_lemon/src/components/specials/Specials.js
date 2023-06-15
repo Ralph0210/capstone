@@ -1,8 +1,65 @@
 import React from 'react'
+import './specials.css'
+import Greek_Salad from '../../assets/greek salad.jpg'
+import Bruchetta from "../../assets/bruschetta-2.jpg"
+import Lemon_Dessert from '../../assets/lemon dessert.jpg'
 
 const Specials = () => {
+
+  const specials = [
+    { picture: Greek_Salad,
+      name: 'Greek Salad',
+      price: '$12.99',
+      description: 'The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons.',
+    },
+    { picture: Bruchetta,
+      name: 'Bruchetta',
+      price: '$5.99',
+      description: 'Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. '
+    },
+    {
+      picture: Lemon_Dessert,
+      name: 'Lemon Dessert',
+      price: '$5.00',
+      description: 'This comes straight from grandma’s recipe book, every last ingredient has been sourced and is as authentic as can be imagined.'
+    }
+  ]
+
+  const Menu = () => {
+    return (
+      <>
+        {specials.map((dish, index) => (
+          <div key={index}>
+            <div className='card'>
+            <div className='menu_image_container'>
+              <img src={dish.picture} alt={dish.name} />
+            </div>
+            <div className='dish_content'>
+              <h2>{dish.name}</h2>
+              <h3>{dish.price}</h3>
+              <article>{dish.description}</article>
+              <a href='#'>Order delivery</a>
+            </div>
+            </div>
+          </div>
+      ))}
+      </>
+    )
+  }
+
+
   return (
-    <div>Specials</div>
+    <div>
+      <div className='specials section__padding'>
+         <h2>Specials</h2>
+        <button className='online_menu'>Online Menu</button>
+      </div>
+
+      <div className='specials_cards section__padding'>
+        <Menu />
+      </div>
+
+    </div>
   )
 }
 

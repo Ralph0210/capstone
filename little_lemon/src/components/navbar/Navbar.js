@@ -18,7 +18,7 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false)
 
   return (
-    <nav className='section__padding'>
+    <nav>
       <div className='logo_container'>
       <Logo className='logo'/>
       </div>
@@ -29,7 +29,7 @@ const Navbar = () => {
         {toggleMenu
         ? <RiCloseLine color='#495e57' size={20} onClick={() => setToggleMenu(false)}/>
         : <RiMenu3Line color='#495e57' size={20} onClick={() => setToggleMenu(true)}/>}
-        {toggleMenu && <div className='navbar_menu_nav_list'>
+        {toggleMenu && <div className='navbar_menu_nav_list scale-up-tr'>
           <Nav />
         </div>}
       </div>
