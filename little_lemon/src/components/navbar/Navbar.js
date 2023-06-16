@@ -1,15 +1,16 @@
 import {React, useState } from 'react'
 import { ReactComponent as Logo } from "../../assets/Logo.svg"
 import './navbar.css'
-import { RiMenu3Line, RiCloseLine} from 'react-icons/ri'
+import { RiMenu3Line, RiCloseLine} from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const Nav = () => (
     <ul className="nav_list">
-                    <li><a href="#">Home</a></li>
+                    <li><Link to="/">Home</Link></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Menu</a></li>
-                    <li><a href="#">Reservations</a></li>
+                    <li><Link to="/booking">Reservation</Link></li>
                     <li><a href="#">Order Online</a></li>
                     <li><a href="#">Login</a></li>
                 </ul>
@@ -20,10 +21,10 @@ const Navbar = () => {
   return (
     <nav>
       <div className='logo_container'>
-      <Logo className='logo'/>
+        <Logo className='logo'/>
       </div>
       <div className='nav_list_container'>
-      <Nav />
+        <Nav />
       </div>
       <div className='navbar_menu'>
         {toggleMenu

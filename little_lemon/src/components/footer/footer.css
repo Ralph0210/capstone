@@ -10,13 +10,15 @@ footer {
     align-self: flex-start;
   }
   footer ul {
+    flex: 1;
+    color: var(--green);
     flex: 1 0 1;
     list-style: none;
     font-size: 2rem;
     font-family: "Karla";
     justify-content: space-between;
   }
-  
+
   footer ul > li:first-child {
     font-weight: 800;
     margin-bottom: 2rem;
