@@ -1,0 +1,97 @@
+
+
+form {
+    padding: 5rem 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+input, select {
+    max-width: 50%;
+    height: 3rem;
+    font-family: var(--karla_regular);
+    font-size: 1.8rem;
+    color: var(--green);
+}
+
+label, p {
+    font-family: var(--karla_regular);
+    font-size: 2.4rem;
+    color: var(--green);
+    margin-bottom: 1rem;
+}
+
+.date {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.guests {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.time-button {
+    flex: 1;
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.time-button button:hover {
+    /* background-color: var(--green);
+    color: white; */
+    transform: scale(0.95);
+}
+
+.time-button button {
+    border: 2px solid var(--green);
+    background-color: white;
+    font-family: var(--karla_regular);
+    font-size: 2.4em;
+    border-radius: 1rem;
+    color: var(--green);
+    padding: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+
+
+.occasion {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    flex: 1;
+    color: var(--green);
+    background-color: var(--yellow);
+    border: 0;
+    font-family: var(--karla_regular);
+    font-size: 1.8rem;
+    width: 20rem;
+    padding: 1.5rem 0;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.submit:active{
+    transform: scale(0.9);
+}
+
+.time-button button:active{
+    transform: scale(0.9);
+}
+
+.time-button button:disabled{
+    background-color: var(--green);
+    color: white;
+}
+

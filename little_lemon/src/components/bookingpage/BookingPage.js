@@ -2,11 +2,11 @@ import React from 'react'
 import './bookingpage.css'
 import BookingForm from '../bookingform/BookingForm'
 
-const BookingPage = ({availableTimes}) => {
+const BookingPage = ({availableTimes, dispatch}) => {
   return (
-    <div>
-        <BookingForm availableTimes={availableTimes}/>
-    </div>
+    <>
+        <BookingForm availableTimes={availableTimes} dispatch={dispatch}/>
+    </>
   )
 }
 
