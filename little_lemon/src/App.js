@@ -5,7 +5,7 @@ import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
-
+  const [date, setDate] = useState({selectedDate: null})
 
   const initializeTimes = () => ({
     selectedTime: null,
@@ -35,7 +35,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/booking' element={<BookingPage availableTimes={availableTimes} dispatch={dispatch}/>} />
+        <Route path='/booking/*' element={<BookingPage availableTimes={availableTimes} dispatch={dispatch} date={date} setDate={setDate}/>} />
       </Routes>
       <Footer />
     </div>

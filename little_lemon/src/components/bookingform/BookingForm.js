@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './bookingform.css'
+import { Link} from 'react-router-dom'
 
-const BookingForm = ({availableTimes, dispatch}) => {
-  const [date, setDate] = useState('')
+const BookingForm = ({availableTimes, dispatch, date, setDate}) => {
+  // const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [guests, setGuests] = useState(1)
   const [occasion, setOccasion] = useState('')
@@ -19,12 +20,16 @@ const BookingForm = ({availableTimes, dispatch}) => {
     dispatch({type: 'SELECT_TIME', payload: time})
   }
 
+  const handleContinue = (e) => {
+    // e.preventDefault()
+  }
+
 
   return (
      <form>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" onChange={(e) => setDate(e.target.value)}/>
+        <input type="date" id="res-date" onChange={(e) => setDate({selectedDate: e.target.value})}/>
         </div>
 
         <div className='guests'>
@@ -44,11 +49,13 @@ const BookingForm = ({availableTimes, dispatch}) => {
         <select id="occasion" onChange={(e) => setOccasion(e.target.value)}>
           <option>Birthday</option>
           <option>Anniversary</option>
+          <option>Other</option>
         </select>
         </div>
 
-        <input className='submit' type="submit" value="Continue" />
-
+        <Link to='/booking/customer' className="link-button">Continue
+          {/* <button className='submit' type="submit" onClick={(e) => handleContinue(e)}>Continue</button> */}
+        </Link>
     </form>
   )
 }
