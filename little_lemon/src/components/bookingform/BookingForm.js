@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './bookingform.css'
 import { Link } from 'react-router-dom'
 
-const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion}) => {
+const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion, fname, setFname, lname, setLname, email, setEmail, phone, setPhone}) => {
 
   useEffect(() => {
     console.log(date);
@@ -21,6 +21,7 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
 
 
   return (
+    <>
     <div className='form_one'>
      <form>
         <div className='date'>
@@ -42,18 +43,46 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" value={occasion.selectedOccasion} onChange={(e) => setOccasion({selectedOccasion: e.target.value})}>
+        <select id="occasion" value={occasion.selectedOccasion} onChange={(e) => {setOccasion({selectedOccasion: e.target.value})}}>
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Other</option>
+          <option>None</option>
         </select>
+        {occasion.selectedOccasion === "Other" && <textarea/>}
         </div>
-
-        <Link to='/booking/customer' className="link-button">Continue
-          {/* <button className='submit' type="submit" onClick={(e) => handleContinue(e)}>Continue</button> */}
-        </Link>
+          <hr/>
     </form>
     </div>
+
+      <div className='form_two'>
+        <form>
+          <div className='fname'>
+          <label htmlFor='first_name'>First Name</label>
+          <input type='text' id='first_name' value={fname} onChange={(e) => setFname(e.target.value)}/>
+          </div>
+
+          <div className='lname'>
+          <label htmlFor='last_name'>Last Name</label>
+          <input type='text' id='last_name' value={lname} onChange={(e) => setLname(e.target.value)}/>
+          </div>
+
+
+          <div className='email'>
+          <label htmlFor='email'>Email</label>
+          <input type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          </div>
+
+          <div className='tel'>
+          <label htmlFor='phone'>Phone Number</label>
+          <input type='tel' id='phone' value={phone} onChange={(e) => setPhone(e.target.value)}/>
+          </div>
+
+          <Link to='/booking/review' className="link-button"><button type='submit' id='submit'>Reserve</button></Link>
+        </form>
+        </div>
+
+        </>
   )
 }
 

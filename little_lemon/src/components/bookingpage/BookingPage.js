@@ -2,7 +2,7 @@ import React from 'react'
 import './bookingpage.css'
 import BookingForm from '../bookingform/BookingForm'
 import {Routes, Route} from 'react-router-dom'
-import BookingFormTwo from '../bookingformtwo/BookingFormTwo'
+import { Review } from '../review/Review'
 import { useState } from 'react'
 
 const BookingPage = (props) => {
@@ -13,10 +13,9 @@ const BookingPage = (props) => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<BookingForm {...props}/>}/>
-        <Route path='/customer' element={<BookingFormTwo
-        fname={fname} setFname={setFname} lname={lname} setLname={setLname} email={email} setEmail={setEmail} phone={phone} setPhone={setPhone}
-        />} />
+        <Route path='/' element={<BookingForm {...props}
+        fname={fname} setFname={setFname} lname={lname} setLname={setLname} email={email} setEmail={setEmail} phone={phone} setPhone={setPhone}/>}/>
+        <Route path='/review' element={<Review {...props} fname={fname} lname = {lname} email={email} phone={phone}/>} />
       </Routes>
     </>
   )
