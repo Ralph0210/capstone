@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './bookingform.css'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const BookingForm = ({availableTimes, dispatch, date, setDate}) => {
-  // const [date, setDate] = useState('')
-  const [time, setTime] = useState('')
-  const [guests, setGuests] = useState(1)
-  const [occasion, setOccasion] = useState('')
+const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion}) => {
 
-  // useEffect(() => {
-  //   console.log(date);
-  //   console.log(time);
-  //   console.log(guests);
-  //   console.log(occasion);
-  // }, [date, time, guests, occasion])
+  useEffect(() => {
+    console.log(date);
+    console.log(guests);
+    console.log(occasion);
+  }, [date, guests, occasion])
 
   const handleTimeSelection = (e, time) => {
     e.preventDefault();
@@ -26,15 +21,16 @@ const BookingForm = ({availableTimes, dispatch, date, setDate}) => {
 
 
   return (
+    <div className='form_one'>
      <form>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" onChange={(e) => setDate({selectedDate: e.target.value})}/>
+        <input type="date" id="res-date" value={date.selectedDate} onChange={(e) => setDate({selectedDate: e.target.value})}/>
         </div>
 
         <div className='guests'>
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" onChange={(e) => setGuests(e.target.value)} />
+        <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" value={guests.selectedGuests} onChange={(e) => setGuests({selectedGuests: e.target.value})} />
         </div>
 
         <p>Please choose a time below:</p>
@@ -46,7 +42,7 @@ const BookingForm = ({availableTimes, dispatch, date, setDate}) => {
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" onChange={(e) => setOccasion(e.target.value)}>
+        <select id="occasion" value={occasion.selectedOccasion} onChange={(e) => setOccasion({selectedOccasion: e.target.value})}>
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Other</option>
@@ -57,6 +53,7 @@ const BookingForm = ({availableTimes, dispatch, date, setDate}) => {
           {/* <button className='submit' type="submit" onClick={(e) => handleContinue(e)}>Continue</button> */}
         </Link>
     </form>
+    </div>
   )
 }
 

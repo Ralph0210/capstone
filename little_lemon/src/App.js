@@ -6,6 +6,8 @@ import {Routes, Route} from 'react-router-dom'
 function App() {
 
   const [date, setDate] = useState({selectedDate: null})
+  const [guests, setGuests] = useState({selectedGuests: 1})
+  const [occasion, setOccasion] = useState({selectedOccasion: "Birthday"})
 
   const initializeTimes = () => ({
     selectedTime: null,
@@ -35,7 +37,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/' element={<Homepage />} />
-        <Route path='/booking/*' element={<BookingPage availableTimes={availableTimes} dispatch={dispatch} date={date} setDate={setDate}/>} />
+        <Route path='/booking/*' element={<BookingPage 
+        availableTimes={availableTimes} dispatch={dispatch} date={date} setDate={setDate}
+        guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion}/>} />
       </Routes>
       <Footer />
     </div>

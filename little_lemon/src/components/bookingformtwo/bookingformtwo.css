@@ -1,0 +1,48 @@
+.form_two form{
+    padding: 5% 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.form_two div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form_two label {
+    color: var(--green);
+    font-size: 2.4em;
+    font-family: var(--karla_regular);
+}
+
+.form_two input{
+    color: var(--green);
+    font-family: var(--karla_regular);
+    max-width: 50%;
+    height: 3rem;
+    font-size: 1.8em;
+}
+
+.form_two .link-button {
+    display: flex;
+    flex: 1;
+    font-family: var(--karla_regular);
+    font-size: 1.8rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem 0;
+    border: 0;
+    outline: 0;
+    background-color: var(--yellow);
+    max-width: 20rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    position: relative;
+    color: var(--green);
+    justify-content: center;
+  }
+
+  .form_two  .link-button:active{
+    transform: scale(0.9);
+}
