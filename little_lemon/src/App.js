@@ -9,7 +9,7 @@ function App() {
   const [guests, setGuests] = useState({selectedGuests: 1})
   const [occasion, setOccasion] = useState({selectedOccasion: "None"})
 
-  const initializeTimes = () => ({
+const initializeTimes = () => ({
     selectedTime: null,
     availableTimes: ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
   });
