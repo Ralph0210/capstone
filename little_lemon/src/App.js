@@ -7,7 +7,7 @@ function App() {
 
   const [date, setDate] = useState({selectedDate: null})
   const [guests, setGuests] = useState({selectedGuests: 1})
-  const [occasion, setOccasion] = useState({selectedOccasion: "Birthday"})
+  const [occasion, setOccasion] = useState({selectedOccasion: "None"})
 
   const initializeTimes = () => ({
     selectedTime: null,

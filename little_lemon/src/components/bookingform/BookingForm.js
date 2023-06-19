@@ -22,6 +22,7 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
 
   return (
     <>
+    <p id='promo'>Reserve your table now and embark on a flavorful journey. See you soon!</p>
     <div className='form_one'>
      <form>
         <div className='date'>
@@ -34,22 +35,28 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
         <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" value={guests.selectedGuests} onChange={(e) => setGuests({selectedGuests: e.target.value})} />
         </div>
 
+        <div>
         <p>Please choose a time below:</p>
         <div className='time-button'>
         {availableTimes.availableTimes.map((time) => (
             <button key={time} onClick={(e) => handleTimeSelection(e, time)} disabled={availableTimes.selectedTime === time}>{time}</button>
           ))}
         </div>
+        </div>
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
         <select id="occasion" value={occasion.selectedOccasion} onChange={(e) => {setOccasion({selectedOccasion: e.target.value})}}>
+          <option selected>None</option>
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Other</option>
-          <option>None</option>
         </select>
-        {occasion.selectedOccasion === "Other" && <textarea/>}
+        {occasion.selectedOccasion !== "None" &&
+        <>
+        <label htmlFor='requests' className='requests'>Special Requests (optional)</label>
+        <textarea id='requests'/>
+        </>}
         </div>
           <hr/>
     </form>
