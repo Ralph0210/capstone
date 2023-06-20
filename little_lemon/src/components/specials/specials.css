@@ -20,6 +20,10 @@
     background-color: var(--yellow);
   }
 
+  .specials button:focus{
+      border: 2px solid blue;
+  }
+
   .specials_cards {
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr 1fr; */

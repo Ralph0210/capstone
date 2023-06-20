@@ -19,7 +19,7 @@ const [messages, setMessages] = useState({
   email: false,
   mTel: 'Please provide your phone number',
   tel: false,
-  mDate: 'Please choose a date',
+  mDate: 'Please choose a valid date',
   date: false,
   mGuests: 'Please choose the number of the guests',
   guests: false,
@@ -32,6 +32,11 @@ const [messages, setMessages] = useState({
   const handleChangeOnBlur = (e) => {
     const {name, value} = e.target;
     if (value === '') {
+      setMessages((data) => ({
+        ...data,
+        [name]: true
+      }))
+    } else if(name === 'date' && new Date(value) < new Date()) {
       setMessages((data) => ({
         ...data,
         [name]: true
@@ -51,6 +56,13 @@ const [messages, setMessages] = useState({
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if(formData.time === '') {
+      setMessages((data) => ({
+        ...data,
+        time: true
+      }))
+      return
+    }
     submitForm(formData)
   }
 
@@ -71,7 +83,7 @@ const [messages, setMessages] = useState({
 
   return (
     <>
-    <p id='promo'>Reserve your table now and embark on a flavorful journey. See you soon!</p>
+    <p id='promo' tabIndex={0}>Reserve your table now and embark on a flavorful journey. See you soon!</p>
     <div className='form_one'>
      <form onSubmit={handleSubmit}>
         <div className='date'>
@@ -89,13 +101,14 @@ const [messages, setMessages] = useState({
         <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} onBlur={handleChangeOnBlur}/>
         </div>
 
-        <div>
-        <label htmlFor='time-button'>Please choose a time below:</label>
+        <div >
+        <label htmlFor='time-button'  tabIndex={0}>Please choose a time below:</label>
+        {messages.time &&<p className='message'>{messages.mTime}</p>}
         <div className='time-button' id='time-button'>
         {availableTimes.availableTimes.map((time) => (
             <button key={time} name='time' value={time} onClick={(e) => {
               handleTimeSelection(e, time)
-            handleChange(e)}} disabled={availableTimes.selectedTime === time}>{time}</button>
+            handleChange(e)}} disabled={availableTimes.selectedTime === time} onBlur={handleChangeOnBlur}>{time}</button>
           ))}
         </div>
         </div>

@@ -29,3 +29,7 @@
     color: var(--green);
     justify-content: center;
 }
+
+.review .link:focus{
+    border: 2px solid blue;
+}

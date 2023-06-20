@@ -8,9 +8,9 @@ const CTA = () => {
     <main>
             <div className="hero_container section__padding">
                 <div className="left_container">
-                        <h2>Little Lemon</h2>
-                        <h3>Chicago</h3>
-                    <article>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</article>
+                        <h2 tabIndex={0}>Little Lemon</h2>
+                        <h3 tabIndex={0}>Chicago</h3>
+                    <article tabIndex={0}>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.</article>
                     <Link to='/booking' className="link-button">
                       <button>Reserve a Table</button>
                     </Link>

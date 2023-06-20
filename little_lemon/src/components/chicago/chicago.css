@@ -21,16 +21,19 @@
 
 .left_box h2{
     font-family: var(--markazi);
+    color: var(--yellow);
     font-size: 5.6rem;
   }
 
 .left_box h3 {
     font-size: 3.2rem;
     font-family: var(--markazi);
+    color: white;
     margin-bottom: 1.5rem;
   }
 
 .left_box article {
+    color: white;
     font-size: 2rem;
     font-family: var(--karla_regular);
   }

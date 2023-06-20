@@ -30,16 +30,16 @@ const Specials = () => {
       <>
         {specials.map((dish, index) => (
           <div key={index}>
-            <div className='card'>
+            <div className='card' tabIndex={0}>
             <div className='menu_image_container'>
               <img src={dish.picture} alt={dish.name} />
             </div>
             <div className='dish_content'>
               <div className='dish_title'>
-              <h2>{dish.name}</h2>
-              <h3>{dish.price}</h3>
+              <h2 tabIndex={0}>{dish.name}</h2>
+              <h3 tabIndex={0}>{dish.price}</h3>
               </div>
-              <article>{dish.description}</article>
+              <article tabIndex={0}>{dish.description}</article>
               <a href='#'>Order delivery</a>
             </div>
             </div>
@@ -53,8 +53,8 @@ const Specials = () => {
   return (
     <div>
       <div className='specials section__padding'>
-         <h2>Specials</h2>
-        <button className='online_menu'>Online Menu</button>
+         <h2 tabIndex={0}>Specials</h2>
+        <button className='online_menu' tabIndex={0}>Online Menu</button>
       </div>
 
       <div className='specials_cards'>

@@ -6,26 +6,26 @@ const Footer = () => {
   return (
     <footer>
             <Logo className="logo"/>
-            <ul className="navigation">
-                <li>Doormat Navigtaion</li>
-                <li>Home</li>
-                <li>About</li>
-                <li>Menu</li>
-                <li>Reservations</li>
-                <li>Order Online</li>
-                <li>Login</li>
+            <ul className="navigation" tabIndex={0}>
+                <li tabIndex={0}>Doormat Navigtaion</li>
+                <li tabIndex={0}>Home</li>
+                <li tabIndex={0}>About</li>
+                <li tabIndex={0}>Menu</li>
+                <li tabIndex={0}>Reservations</li>
+                <li tabIndex={0}>Order Online</li>
+                <li tabIndex={0}>Login</li>
             </ul>
-            <ul className="contact">
-                <li>Contact</li>
-                <li>Address</li>
-                <li>Phone Number</li>
-                <li>Email</li>
+            <ul className="contact" tabIndex={0}>
+                <li tabIndex={0}>Contact</li>
+                <li tabIndex={0}>Address</li>
+                <li tabIndex={0}>Phone Number</li>
+                <li tabIndex={0}>Email</li>
             </ul>
-            <ul className="socialMediaLinks">
-                <li>Social Media Links</li>
-                <li>Address</li>
-                <li>Phone Number</li>
-                <li>Email</li>
+            <ul className="socialMediaLinks" tabIndex={0}>
+                <li tabIndex={0}>Social Media Links</li>
+                <li tabIndex={0}>Address</li>
+                <li tabIndex={0}>Phone Number</li>
+                <li tabIndex={0}>Email</li>
             </ul>
         </footer>
   )
