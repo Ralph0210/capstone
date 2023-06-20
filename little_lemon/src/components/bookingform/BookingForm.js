@@ -10,6 +10,21 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
   //   console.log(occasion);
   // }, [date, guests, occasion])
 
+const [messages, setMessages] = useState({
+  mFname:'Please type in your first name',
+  fname: false,
+})
+
+  const handleChangeOnBlurFname = (e) => {
+    const {name, value} = e.target;
+    if (value === '') {
+      setMessages((data) => ({
+        ...data,
+        [name]: true
+      }))
+    }
+  }
+
   const handleTimeSelection = (e, time) => {
     e.preventDefault();
     dispatch({type: 'SELECT_TIME', payload: time})
@@ -42,7 +57,7 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
      <form onSubmit={handleSubmit}>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" name='date' value={formData.date} onChange={(e) => {
+        <input type="date" required id="res-date" name='date' value={formData.date} onChange={(e) => {
           handleChange(e);
           handleDateSelection(e);
         }}/>
@@ -50,7 +65,7 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
 
         <div className='guests'>
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} />
+        <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} />
         </div>
 
         <div>
@@ -66,7 +81,7 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" value={formData.occasion} onChange={handleChange} name='occasion'>
+        <select id="occasion" required value={formData.occasion} onChange={handleChange} name='occasion'>
           <option selected>None</option>
           <option>Birthday</option>
           <option>Anniversary</option>
@@ -86,23 +101,24 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
         {/* <form> */}
           <div className='fname'>
           <label htmlFor='first_name'>First Name</label>
-          <input type='text' id='first_name' value={formData.fname} onChange={handleChange} name='fname'/>
+          {messages.fname &&<p>{messages.mFname}</p>}
+          <input type='text' required id='first_name' value={formData.fname} onChange={handleChange} name='fname' onBlur={handleChangeOnBlurFname}/>
           </div>
 
           <div className='lname'>
           <label htmlFor='last_name'>Last Name</label>
-          <input type='text' id='last_name' value={formData.lname} onChange={handleChange} name='lname'/>
+          <input type='text' required id='last_name' value={formData.lname} onChange={handleChange} name='lname'/>
           </div>
 
 
           <div className='email'>
           <label htmlFor='email'>Email</label>
-          <input type='email' id='email' value={formData.email} onChange={handleChange} name='email'/>
+          <input type='email' required id='email' value={formData.email} onChange={handleChange} name='email'/>
           </div>
 
           <div className='tel'>
           <label htmlFor='phone'>Phone Number</label>
-          <input type='tel' id='phone' value={formData.phone} onChange={handleChange} name='tel'/>
+          <input type='tel' required id='phone' value={formData.phone} onChange={handleChange} name='tel'/>
           </div>
 
           {/* <Link to='/booking/review' className="link-button"></Link> */}
