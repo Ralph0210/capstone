@@ -17,7 +17,7 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    submitForm(e.target.value)
+    submitForm(formData)
   }
 
   const handleDateSelection = (e) => {
@@ -57,7 +57,9 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
         <p>Please choose a time below:</p>
         <div className='time-button'>
         {availableTimes.availableTimes.map((time) => (
-            <button key={time} name='time' onClick={(e) => handleTimeSelection(e, time)} onChange={handleChange} disabled={availableTimes.selectedTime === time}>{time}</button>
+            <button key={time} name='time' value={time} onClick={(e) => {
+              handleTimeSelection(e, time)
+            handleChange(e)}} disabled={availableTimes.selectedTime === time}>{time}</button>
           ))}
         </div>
         </div>
@@ -103,7 +105,8 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
           <input type='tel' id='phone' value={formData.phone} onChange={handleChange} name='tel'/>
           </div>
 
-          <Link to='/booking/review' className="link-button"><button type='submit' id='submit'>Reserve</button></Link>
+          {/* <Link to='/booking/review' className="link-button"></Link> */}
+          <button type='submit' id='submit'>Reserve</button>
         </form>
         </div>
 

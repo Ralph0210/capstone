@@ -121,7 +121,7 @@ textarea {
     font-size: 1.8em;
 }
 
-.link-button button{
+.form_one button{
     display: flex;
     flex: 1;
     font-family: var(--karla_regular);
@@ -139,7 +139,7 @@ textarea {
     justify-content: center;
   }
 
-  .link-button button:active{
+  .form_one button:active{
     transform: scale(0.9);
 }
 

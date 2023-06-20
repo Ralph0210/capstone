@@ -1,10 +1,11 @@
 import { Navbar, Homepage, Footer, BookingPage } from './components';
 import './App.css';
 import { useState, useReducer, useEffect } from 'react';
-import {Routes, Route} from 'react-router-dom'
-import { fetchAPI, sumbitAPI } from './api'
+import {Routes, Route, useNavigate } from 'react-router-dom'
+import { fetchAPI, submitAPI } from './api'
 
 function App() {
+  const navigate = useNavigate();
   const today = new Date()
   // const [date, setDate] = useState('')
   // const [guests, setGuests] = useState({selectedGuests: 1})
@@ -29,7 +30,21 @@ function App() {
   // }, []);
 
   const submitForm = (formData) => {
-    console.log(formData)
+    if (submitAPI(formData)) {
+      console.log(formData);
+      navigate('/booking/review');
+      setFormData({
+        date: today,
+        guests: '',
+        time: '',
+        occasion: 'None',
+        requests: '',
+        fname: '',
+        lname: '',
+        email: '',
+        tel: ''
+      });
+    }
   }
 
   const initializeTimes = () => {
@@ -66,10 +81,6 @@ function App() {
   }
 
   const [availableTimes, dispatch] =  useReducer(updateTimes, initializeTimes())
-
-  useEffect(() => {
-    console.log(availableTimes.selectedTime);
-  }, [availableTimes.selectedTime])
 
   return (
     <div className="App">
