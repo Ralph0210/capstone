@@ -5,9 +5,22 @@ import {Routes, Route} from 'react-router-dom'
 import { fetchAPI, sumbitAPI } from './api'
 
 function App() {
-  const [date, setDate] = useState('')
-  const [guests, setGuests] = useState({selectedGuests: 1})
-  const [occasion, setOccasion] = useState({selectedOccasion: "None"})
+  const today = new Date()
+  // const [date, setDate] = useState('')
+  // const [guests, setGuests] = useState({selectedGuests: 1})
+  // const [occasion, setOccasion] = useState({selectedOccasion: "None"})
+
+  const [formData, setFormData] = useState({
+    date: today,
+    guests: '',
+    time:'',
+    occasion:'None',
+    requests: '',
+    fname: '',
+    lname: '',
+    email: '',
+    tel: ''
+  })
 
   // useEffect(() => {
   //   const today = new Date();
@@ -20,8 +33,6 @@ function App() {
   }
 
   const initializeTimes = () => {
-    // const today = new Date();
-    const today = new Date('2023-06-30')
     const availableTimes = fetchAPI(today);
 
     return {
@@ -67,8 +78,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/booking/*' element={<BookingPage 
-        availableTimes={availableTimes} dispatch={dispatch} date={date} setDate={setDate}
-        guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion} submitForm={submitForm}/>} />
+        availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm}
+        formData={formData} setFormData={setFormData}/>} />
       </Routes>
       </div>
       <Footer className='footer'/>

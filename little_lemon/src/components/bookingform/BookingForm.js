@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './bookingform.css'
 import { Link } from 'react-router-dom'
 
-const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion, fname, setFname, lname, setLname, email, setEmail, phone, setPhone, submitForm}) => {
+const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitForm}) => {
 
   // useEffect(() => {
   //   console.log(date);
@@ -26,6 +26,14 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
     dispatch({type: 'SELECT_DATE', payload: f})
   }
 
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData((data) => ({
+      ...data,
+      [name]: value
+    }))
+  }
+
 
   return (
     <>
@@ -34,35 +42,38 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
      <form onSubmit={handleSubmit}>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" value={date.selectedDate} onChange={handleDateSelection}/>
+        <input type="date" id="res-date" name='date' value={formData.date} onChange={(e) => {
+          handleChange(e);
+          handleDateSelection(e);
+        }}/>
         </div>
 
         <div className='guests'>
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" value={guests.selectedGuests} onChange={(e) => setGuests({selectedGuests: e.target.value})} />
+        <input type="number" placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} />
         </div>
 
         <div>
         <p>Please choose a time below:</p>
         <div className='time-button'>
         {availableTimes.availableTimes.map((time) => (
-            <button key={time} onClick={(e) => handleTimeSelection(e, time)} disabled={availableTimes.selectedTime === time}>{time}</button>
+            <button key={time} name='time' onClick={(e) => handleTimeSelection(e, time)} onChange={handleChange} disabled={availableTimes.selectedTime === time}>{time}</button>
           ))}
         </div>
         </div>
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" value={occasion.selectedOccasion} onChange={(e) => {setOccasion({selectedOccasion: e.target.value})}}>
+        <select id="occasion" value={formData.occasion} onChange={handleChange} name='occasion'>
           <option selected>None</option>
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Other</option>
         </select>
-        {occasion.selectedOccasion !== "None" &&
+        {formData.occasion !== "None" &&
         <>
         <label htmlFor='requests' className='requests'>Special Requests (optional)</label>
-        <textarea id='requests'/>
+        <textarea id='requests' onChange={handleChange} name='requests'/>
         </>}
         </div>
           <hr/>
@@ -73,23 +84,23 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
         {/* <form> */}
           <div className='fname'>
           <label htmlFor='first_name'>First Name</label>
-          <input type='text' id='first_name' value={fname} onChange={(e) => setFname(e.target.value)}/>
+          <input type='text' id='first_name' value={formData.fname} onChange={handleChange} name='fname'/>
           </div>
 
           <div className='lname'>
           <label htmlFor='last_name'>Last Name</label>
-          <input type='text' id='last_name' value={lname} onChange={(e) => setLname(e.target.value)}/>
+          <input type='text' id='last_name' value={formData.lname} onChange={handleChange} name='lname'/>
           </div>
 
 
           <div className='email'>
           <label htmlFor='email'>Email</label>
-          <input type='email' id='email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type='email' id='email' value={formData.email} onChange={handleChange} name='email'/>
           </div>
 
           <div className='tel'>
           <label htmlFor='phone'>Phone Number</label>
-          <input type='tel' id='phone' value={phone} onChange={(e) => setPhone(e.target.value)}/>
+          <input type='tel' id='phone' value={formData.phone} onChange={handleChange} name='tel'/>
           </div>
 
           <Link to='/booking/review' className="link-button"><button type='submit' id='submit'>Reserve</button></Link>
