@@ -2,17 +2,36 @@ import { Navbar, Homepage, Footer, BookingPage } from './components';
 import './App.css';
 import { useState, useReducer, useEffect } from 'react';
 import {Routes, Route} from 'react-router-dom'
+import { fetchAPI, sumbitAPI } from './api'
 
 function App() {
-
-  const [date, setDate] = useState({selectedDate: null})
+  const [date, setDate] = useState('')
   const [guests, setGuests] = useState({selectedGuests: 1})
   const [occasion, setOccasion] = useState({selectedOccasion: "None"})
 
-const initializeTimes = () => ({
-    selectedTime: null,
-    availableTimes: ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
-  });
+  // useEffect(() => {
+  //   const today = new Date();
+  //   const availableTimes = fetchAPI(today);
+  //   // Do something with the availableTimes
+  // }, []);
+
+  const initializeTimes = () => {
+    // const today = new Date();
+    const today = new Date('2023-06-30')
+    const availableTimes = fetchAPI(today);
+
+    return {
+      selectedTime: null,
+      availableTimes: availableTimes,
+    };
+  };
+
+// const initializeTimes = () => ({
+
+//     date: today,
+//     selectedTime: null,
+//     availableTimes: ['17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
+//   });
 
   const updateTimes = (state, action) => {
     switch (action.type) {
@@ -21,6 +40,11 @@ const initializeTimes = () => ({
           ...state,
            selectedTime: action.payload,
         };
+      case 'SELECT_DATE':
+        return {
+          ...state,
+          availableTimes: fetchAPI(action.payload)
+        }
         default:
           return state;
     }

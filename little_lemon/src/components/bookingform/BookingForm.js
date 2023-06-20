@@ -4,15 +4,35 @@ import { Link } from 'react-router-dom'
 
 const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion, fname, setFname, lname, setLname, email, setEmail, phone, setPhone}) => {
 
-  useEffect(() => {
-    console.log(date);
-    console.log(guests);
-    console.log(occasion);
-  }, [date, guests, occasion])
+  // useEffect(() => {
+  //   console.log(date);
+  //   console.log(guests);
+  //   console.log(occasion);
+  // }, [date, guests, occasion])
 
   const handleTimeSelection = (e, time) => {
     e.preventDefault();
     dispatch({type: 'SELECT_TIME', payload: time})
+  }
+
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+  const handleDateSelection = (e) => {
+    e.preventDefault();
+    const f = new Date(e.target.value)
+    dispatch({type: 'SELECT_DATE', payload: f})
   }
 
   const handleContinue = (e) => {
@@ -27,7 +47,7 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
      <form>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
-        <input type="date" id="res-date" value={date.selectedDate} onChange={(e) => setDate({selectedDate: e.target.value})}/>
+        <input type="date" id="res-date" value={date.selectedDate} onChange={handleDateSelection}/>
         </div>
 
         <div className='guests'>
