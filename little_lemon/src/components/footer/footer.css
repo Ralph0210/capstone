@@ -4,6 +4,8 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     align-items: flex-start;
+    position: relative;
+    bottom: 0;
   }
   .logo {
     flex: 1 0 1;

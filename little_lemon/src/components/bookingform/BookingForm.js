@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './bookingform.css'
 import { Link } from 'react-router-dom'
 
-const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion, fname, setFname, lname, setLname, email, setEmail, phone, setPhone}) => {
+const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests, occasion, setOccasion, fname, setFname, lname, setLname, email, setEmail, phone, setPhone, submitForm}) => {
 
   // useEffect(() => {
   //   console.log(date);
@@ -15,19 +15,10 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
     dispatch({type: 'SELECT_TIME', payload: time})
   }
 
-  function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
-
-    if (month.length < 2)
-        month = '0' + month;
-    if (day.length < 2)
-        day = '0' + day;
-
-    return [year, month, day].join('-');
-}
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    submitForm(e.target.value)
+  }
 
   const handleDateSelection = (e) => {
     e.preventDefault();
@@ -35,16 +26,12 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
     dispatch({type: 'SELECT_DATE', payload: f})
   }
 
-  const handleContinue = (e) => {
-    // e.preventDefault()
-  }
-
 
   return (
     <>
     <p id='promo'>Reserve your table now and embark on a flavorful journey. See you soon!</p>
     <div className='form_one'>
-     <form>
+     <form onSubmit={handleSubmit}>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
         <input type="date" id="res-date" value={date.selectedDate} onChange={handleDateSelection}/>
@@ -79,11 +66,11 @@ const BookingForm = ({availableTimes, dispatch, date, setDate, guests, setGuests
         </>}
         </div>
           <hr/>
-    </form>
-    </div>
+    {/* </form> */}
+    {/* </div> */}
 
-      <div className='form_two'>
-        <form>
+      {/* <div className='form_two'> */}
+        {/* <form> */}
           <div className='fname'>
           <label htmlFor='first_name'>First Name</label>
           <input type='text' id='first_name' value={fname} onChange={(e) => setFname(e.target.value)}/>

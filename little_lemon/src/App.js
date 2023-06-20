@@ -15,6 +15,10 @@ function App() {
   //   // Do something with the availableTimes
   // }, []);
 
+  const submitForm = (formData) => {
+    console.log(formData)
+  }
+
   const initializeTimes = () => {
     // const today = new Date();
     const today = new Date('2023-06-30')
@@ -59,13 +63,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      <div className='content'>
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/booking/*' element={<BookingPage 
         availableTimes={availableTimes} dispatch={dispatch} date={date} setDate={setDate}
-        guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion}/>} />
+        guests={guests} setGuests={setGuests} occasion={occasion} setOccasion={setOccasion} submitForm={submitForm}/>} />
       </Routes>
-      <Footer />
+      </div>
+      <Footer className='footer'/>
     </div>
   );
 }

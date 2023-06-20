@@ -142,3 +142,11 @@ textarea {
   .link-button button:active{
     transform: scale(0.9);
 }
+
+.fname,
+.lname,
+.email,
+.tel {
+    display: flex;
+    flex-direction: column;
+}
