@@ -57,6 +57,13 @@ input, select {
     transform: scale(0.95);
 }
 
+.form_one .time-button button:focus {
+    /* background-color: var(--green);
+    color: white; */
+    border: 2px solid blue;
+    transform: scale(0.95);
+}
+
 .form_one .time-button button {
     border: 2px solid var(--green);
     background-color: white;
@@ -149,4 +156,9 @@ textarea {
 .tel {
     display: flex;
     flex-direction: column;
+}
+
+.message {
+    color: red;
+    font-size: 1.8em;
 }

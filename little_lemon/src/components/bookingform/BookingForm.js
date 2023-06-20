@@ -13,14 +13,33 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
 const [messages, setMessages] = useState({
   mFname:'Please type in your first name',
   fname: false,
+  mLname: 'Please type in your last name',
+  lname: false,
+  mEmail:'Please provide your email address',
+  email: false,
+  mTel: 'Please provide your phone number',
+  tel: false,
+  mDate: 'Please choose a date',
+  date: false,
+  mGuests: 'Please choose the number of the guests',
+  guests: false,
+  mTime: 'Please choose a time',
+  time: false,
+  mOccasion: 'Please choose an occasion',
+  occasion: false,
 })
 
-  const handleChangeOnBlurFname = (e) => {
+  const handleChangeOnBlur = (e) => {
     const {name, value} = e.target;
     if (value === '') {
       setMessages((data) => ({
         ...data,
         [name]: true
+      }))
+    } else {
+      setMessages((data) => ({
+        ...data,
+        [name]: false
       }))
     }
   }
@@ -57,20 +76,22 @@ const [messages, setMessages] = useState({
      <form onSubmit={handleSubmit}>
         <div className='date'>
         <label htmlFor="res-date">Choose date</label>
+        {messages.date &&<p className='message'>{messages.mDate}</p>}
         <input type="date" required id="res-date" name='date' value={formData.date} onChange={(e) => {
           handleChange(e);
           handleDateSelection(e);
-        }}/>
+        }} onBlur={handleChangeOnBlur}/>
         </div>
 
         <div className='guests'>
         <label htmlFor="guests">Number of guests</label>
-        <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} />
+        {messages.guests &&<p className='message'>{messages.mGuests}</p>}
+        <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} onBlur={handleChangeOnBlur}/>
         </div>
 
         <div>
-        <p>Please choose a time below:</p>
-        <div className='time-button'>
+        <label htmlFor='time-button'>Please choose a time below:</label>
+        <div className='time-button' id='time-button'>
         {availableTimes.availableTimes.map((time) => (
             <button key={time} name='time' value={time} onClick={(e) => {
               handleTimeSelection(e, time)
@@ -81,7 +102,8 @@ const [messages, setMessages] = useState({
 
         <div className='occasion'>
         <label htmlFor="occasion">Occasion</label>
-        <select id="occasion" required value={formData.occasion} onChange={handleChange} name='occasion'>
+        {messages.occasion &&<p className='message'>{messages.mOccasion}</p>}
+        <select id="occasion" required value={formData.occasion} onChange={handleChange} name='occasion' onBlur={handleChangeOnBlur}>
           <option selected>None</option>
           <option>Birthday</option>
           <option>Anniversary</option>
@@ -101,24 +123,27 @@ const [messages, setMessages] = useState({
         {/* <form> */}
           <div className='fname'>
           <label htmlFor='first_name'>First Name</label>
-          {messages.fname &&<p>{messages.mFname}</p>}
-          <input type='text' required id='first_name' value={formData.fname} onChange={handleChange} name='fname' onBlur={handleChangeOnBlurFname}/>
+          {messages.fname &&<p className='message'>{messages.mFname}</p>}
+          <input type='text' required id='first_name' value={formData.fname} onChange={handleChange} name='fname' onBlur={handleChangeOnBlur}/>
           </div>
 
           <div className='lname'>
           <label htmlFor='last_name'>Last Name</label>
-          <input type='text' required id='last_name' value={formData.lname} onChange={handleChange} name='lname'/>
+          {messages.lname &&<p className='message'>{messages.mLname}</p>}
+          <input type='text' required id='last_name' value={formData.lname} onChange={handleChange} name='lname' onBlur={handleChangeOnBlur}/>
           </div>
 
 
           <div className='email'>
           <label htmlFor='email'>Email</label>
-          <input type='email' required id='email' value={formData.email} onChange={handleChange} name='email'/>
+          {messages.email &&<p className='message'>{messages.mEmail}</p>}
+          <input type='email' required id='email' value={formData.email} onChange={handleChange} name='email' onBlur={handleChangeOnBlur}/>
           </div>
 
           <div className='tel'>
           <label htmlFor='phone'>Phone Number</label>
-          <input type='tel' required id='phone' value={formData.phone} onChange={handleChange} name='tel'/>
+          {messages.tel &&<p className='message'>{messages.mTel}</p>}
+          <input type='tel' required id='phone' value={formData.phone} onChange={handleChange} name='tel' onBlur={handleChangeOnBlur}/>
           </div>
 
           {/* <Link to='/booking/review' className="link-button"></Link> */}
