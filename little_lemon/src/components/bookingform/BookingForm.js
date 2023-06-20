@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef } from 'react'
 import './bookingform.css'
 import { Link } from 'react-router-dom'
 
 const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitForm}) => {
+
+  const scrollToRef = useRef();
 
   // useEffect(() => {
   //   console.log(date);
@@ -61,6 +63,7 @@ const [messages, setMessages] = useState({
         ...data,
         time: true
       }))
+      scrollToRef.current.scrollIntoView();
       return
     }
     submitForm(formData)
@@ -101,14 +104,14 @@ const [messages, setMessages] = useState({
         <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} onBlur={handleChangeOnBlur}/>
         </div>
 
-        <div >
+        <div ref={scrollToRef}>
         <label htmlFor='time-button'  tabIndex={0}>Please choose a time below:</label>
         {messages.time &&<p className='message'>{messages.mTime}</p>}
         <div className='time-button' id='time-button'>
         {availableTimes.availableTimes.map((time) => (
             <button key={time} name='time' value={time} onClick={(e) => {
               handleTimeSelection(e, time)
-            handleChange(e)}} disabled={availableTimes.selectedTime === time} onBlur={handleChangeOnBlur}>{time}</button>
+            handleChange(e)}} disabled={availableTimes.selectedTime === time}>{time}</button>
           ))}
         </div>
         </div>
