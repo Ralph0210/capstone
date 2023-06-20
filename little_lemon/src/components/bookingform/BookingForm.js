@@ -95,7 +95,7 @@ const [messages, setMessages] = useState({
         <input type="date" required id="res-date" name='date' value={formData.date} onChange={(e) => {
           handleChange(e);
           handleDateSelection(e);
-        }} onBlur={handleChangeOnBlur}/>
+        }} onBlur={handleChangeOnBlur} min={new Date().toISOString().split('T')[0]}/>
         </div>
 
         <div className='guests'>
