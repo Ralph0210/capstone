@@ -38,11 +38,11 @@
   }
 
   .card {
+    background-color: #eef0f5;
     flex: 1;
     border-radius: 2rem;
     /* border: 2px solid var(--yellow); */
     max-width: 28rem;
-    box-shadow: 0 2px 5px gray;
     display: flex;
     flex-direction: column;
     transition: transform 0.2s ease;
@@ -50,6 +50,7 @@
 
   .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 2px 5px gray;
   }
 
 
