@@ -13,17 +13,17 @@ const BookingForm = ({availableTimes, dispatch, formData, setFormData, submitFor
   // }, [date, guests, occasion])
 
 const [messages, setMessages] = useState({
-  mFname:'Please type in your first name',
+  mFname:'Please enter your first name',
   fname: false,
-  mLname: 'Please type in your last name',
+  mLname: 'Please enter your last name',
   lname: false,
-  mEmail:'Please provide your email address',
+  mEmail:'Please enter your email address',
   email: false,
-  mTel: 'Please provide your phone number',
+  mTel: 'Please enter your phone number',
   tel: false,
   mDate: 'Please choose a valid date',
   date: false,
-  mGuests: 'Please choose the number of the guests',
+  mGuests: 'Please enter the number of the guests',
   guests: false,
   mTime: 'Please choose a time',
   time: false,
@@ -101,7 +101,7 @@ const [messages, setMessages] = useState({
         <div className='guests'>
         <label htmlFor="guests">Number of guests</label>
         {messages.guests &&<p className='message'>{messages.mGuests}</p>}
-        <input type="number" required placeholder="1" min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} onBlur={handleChangeOnBlur}/>
+        <input type="number" required min="1" max="10" step="1" id="guests" name='guests' value={formData.guests} onChange={handleChange} onBlur={handleChangeOnBlur}/>
         </div>
 
         <div ref={scrollToRef}>

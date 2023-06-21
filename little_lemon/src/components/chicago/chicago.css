@@ -1,5 +1,5 @@
 .chicago {
-    background-color: var(--green);
+    background-color: #FDF4EE;
     display: flex;
     gap: 2rem;
 }
@@ -9,7 +9,8 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding-bottom: 16%;
+    padding-bottom: 10%;
+    padding-top: 5%;
 }
 
 .right_box {
@@ -21,19 +22,21 @@
 
 .left_box h2{
     font-family: var(--markazi);
-    color: var(--yellow);
+    color: #333333;
     font-size: 5.6rem;
+    font-weight: 300;
   }
 
 .left_box h3 {
     font-size: 3.2rem;
     font-family: var(--markazi);
-    color: white;
+    color: var(--green);
     margin-bottom: 1.5rem;
+    font-weight: 300;
   }
 
 .left_box article {
-    color: white;
+    color: var(--green);
     font-size: 2rem;
     font-family: var(--karla_regular);
   }

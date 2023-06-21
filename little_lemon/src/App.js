@@ -13,7 +13,7 @@ function App() {
 
   const [formData, setFormData] = useState({
     date: today,
-    guests: '1',
+    guests: '',
     time:'',
     occasion:'None',
     requests: '',

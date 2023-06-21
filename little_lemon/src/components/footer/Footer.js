@@ -4,8 +4,11 @@ import "./footer.css"
 
 const Footer = () => {
   return (
-    <footer>
-            <Logo className="logo"/>
+    <footer className='section__padding'>
+            <div className="logo">
+                <Logo/>
+            </div>
+            <div className='links'>
             <ul className="navigation" tabIndex={0}>
                 <li tabIndex={0}>Doormat Navigtaion</li>
                 <li tabIndex={0}>Home</li>
@@ -27,6 +30,7 @@ const Footer = () => {
                 <li tabIndex={0}>Phone Number</li>
                 <li tabIndex={0}>Email</li>
             </ul>
+            </div>
         </footer>
   )
 }

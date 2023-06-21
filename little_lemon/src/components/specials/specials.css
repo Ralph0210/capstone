@@ -1,11 +1,14 @@
 .specials {
     display: flex;
+    padding-bottom: 2rem;
 }
 
 .specials h2 {
     font-family: 'Karla';
   font-size: 4rem;
   flex:1;
+  font-weight: 300;
+  color: #333333;
 }
 
 .specials button {
@@ -29,28 +32,35 @@
     /* grid-template-columns: 1fr 1fr 1fr; */
     display: flex;
     gap: 3.4rem;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20% 2rem;
+    /* align-items: center; */
+    justify-content: space-between;
+    /* padding: 0 20% 2rem; */
   }
 
   .card {
-    flex: 1 0 1;
+    flex: 1;
     border-radius: 2rem;
     /* border: 2px solid var(--yellow); */
-    max-width: 26.5rem;
+    max-width: 28rem;
     box-shadow: 0 2px 5px gray;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
   }
 
 
   .menu_image_container{
-    flex: 1;
+    /* flex: 1; */
     display: flex;
   }
 
 .menu_image_container img{
     max-height: 18.4rem;
-    max-width: 26.5rem;
+    max-width: 28rem;
     object-fit: cover;
     border-radius: 2rem 2rem 0 0;
     width: 100%;
@@ -59,8 +69,10 @@
 
 .dish_content {
     display: flex;
+    flex: 1;
     flex-direction: column;
     padding: 1rem 2rem;
+    min-height: 2rem;
 }
 
 .dish_title {
@@ -68,10 +80,16 @@
     margin-bottom: 2.3rem;
 }
 
+.delivery {
+  margin-top: 1.5rem;
+}
+
 .dish_title h2{
+  color: #333333;
     font-family: "Markazi Text";
     font-size: 2.4rem;
     flex: 1;
+    font-weight: 300;
   }
 
   .dish_title h3{
@@ -79,12 +97,15 @@
     font-size: 1.6rem;
     font-family: "Karla";
     font-weight: 700;
+    color: #EE9972;
   }
 
 .dish_content article {
+  color: #333333;
     font-family: "Karla";
   font-size: 1.6rem;
-  margin-bottom: 1.8rem;
+  /* margin-bottom: 1.8rem; */
+  margin-bottom: auto;
 }
 
 .dish_content a{
@@ -93,6 +114,7 @@
   font-family: "Karla";
   font-weight: 700;
   cursor: pointer;
+  margin-top: auto;
 }
 
 @media screen and (max-width: 1050px) {
@@ -106,22 +128,23 @@
 
 @media screen and (max-width: 700px) {
   .specials_cards {
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+  .specials h2 {
+    font-family: 'Karla';
+  font-size: 3.6rem;
+  flex:1;
+  font-weight: 300;
+  color: #333333;
+}
 }
 
 @media screen and (max-width: 490px) {
   .specials button {
     font-size: 1.2rem;
-    padding: 1rem 0;
     max-width: 10rem;
+    max-height: 5em;
   }
-
-  .specials h2 {
-    font-family: 'Karla';
-  font-size: 3.6rem;
-  flex:1;
-}
 }
